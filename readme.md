@@ -1,3 +1,5 @@
+"Big4Commerce is a multi warehouse e-commerce platform. aiming to reduce shipping time and shipping cost efficiency, the system will automatically forward the order to the nearest warehouse location from the user's address. Shipping costs paid by the user will be determined based on the distance between the selected warehouse location and the user's address."
+
 # Purwadhika Final Project Repository
 
 This is monorepo contain frontend project using ReactJS and backend project using ExpressJS.
