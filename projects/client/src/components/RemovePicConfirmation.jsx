@@ -16,7 +16,6 @@ import React from "react";
 export default function RemovePicConfirmation(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = React.useRef();
-  // console.log(props.picture);
 
   return (
     <>
@@ -36,7 +35,8 @@ export default function RemovePicConfirmation(props) {
         <AlertDialog
           isOpen={isOpen}
           leastDestructiveRef={cancelRef}
-          onClose={onClose}>
+          onClose={onClose}
+        >
           <AlertDialogOverlay>
             <AlertDialogContent>
               <AlertDialogHeader fontSize="lg" fontWeight="bold">
@@ -57,7 +57,8 @@ export default function RemovePicConfirmation(props) {
                     props.onDelete();
                     onClose();
                   }}
-                  ml={3}>
+                  ml={3}
+                >
                   Delete
                 </Button>
               </AlertDialogFooter>

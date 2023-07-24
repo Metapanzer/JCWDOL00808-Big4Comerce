@@ -27,7 +27,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import AddAdminConfirmation from "./AddConfirmation";
-import { useNavigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Product Name is required"),

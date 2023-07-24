@@ -15,7 +15,6 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { sessionExpired } from "../apis/userAPIs";
 import ChangePasswordConfirmation from "./ChangePasswordConfirmation";
@@ -26,7 +25,6 @@ export default function ChangePassword(props) {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
   const toast = useToast();
 

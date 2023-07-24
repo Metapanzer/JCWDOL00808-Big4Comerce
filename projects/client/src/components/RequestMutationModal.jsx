@@ -100,7 +100,6 @@ const StockMutationsModal = ({ isOpen, onClose }) => {
         `${process.env.REACT_APP_API_BASE_URL}/product/getProductOnWarehouse?warehouses_id=${selectedId}`
       );
       setProduct(response.data);
-      // console.log(response.data);
     } else {
       setProduct([]);
     }
@@ -127,7 +126,8 @@ const StockMutationsModal = ({ isOpen, onClose }) => {
               isInvalid={
                 formik.touched.from_warehouse_id &&
                 formik.errors.from_warehouse_id
-              }>
+              }
+            >
               <FormLabel>Select from Warehouse Name</FormLabel>
               <Select
                 placeholder="Select Warehouse name"
@@ -135,7 +135,8 @@ const StockMutationsModal = ({ isOpen, onClose }) => {
                 onChange={(event) => {
                   setSelectedId(event.target.value);
                   formik.handleChange(event);
-                }}>
+                }}
+              >
                 {warehouse.map((warehouses) => (
                   <option key={warehouses.id} value={warehouses.id}>
                     {warehouses.name}
@@ -152,11 +153,13 @@ const StockMutationsModal = ({ isOpen, onClose }) => {
               id="products_id"
               isInvalid={
                 formik.touched.products_id && formik.errors.products_id
-              }>
+              }
+            >
               <FormLabel>Product Name</FormLabel>
               <Select
                 placeholder="Select Product Name"
-                {...formik.getFieldProps("products_id")}>
+                {...formik.getFieldProps("products_id")}
+              >
                 {products.map((product) => {
                   if (product.stocks.some((stock) => stock.stock > 0)) {
                     return (
@@ -181,11 +184,13 @@ const StockMutationsModal = ({ isOpen, onClose }) => {
               id="to_warehouse_id"
               isInvalid={
                 formik.touched.to_warehouse_id && formik.errors.to_warehouse_id
-              }>
+              }
+            >
               <FormLabel>Select to Warehouse Name</FormLabel>
               <Select
                 placeholder="Select Warehouse name"
-                {...formik.getFieldProps("to_warehouse_id")}>
+                {...formik.getFieldProps("to_warehouse_id")}
+              >
                 {warehouse.map((warehouses) => (
                   <option key={warehouses.id} value={warehouses.id}>
                     {warehouses.name}
@@ -200,12 +205,14 @@ const StockMutationsModal = ({ isOpen, onClose }) => {
             <FormControl
               mb={2}
               id="quantity"
-              isInvalid={formik.touched.quantity && formik.errors.quantity}>
+              isInvalid={formik.touched.quantity && formik.errors.quantity}
+            >
               <FormLabel>quantity</FormLabel>
               <NumberInput
                 min={0}
                 {...formik.getFieldProps("quantity")}
-                onChange={(value) => formik.setFieldValue("quantity", value)}>
+                onChange={(value) => formik.setFieldValue("quantity", value)}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -222,7 +229,8 @@ const StockMutationsModal = ({ isOpen, onClose }) => {
                 onClick={() => {
                   onClose();
                   formik.resetForm();
-                }}>
+                }}
+              >
                 Cancel
               </Button>
 
