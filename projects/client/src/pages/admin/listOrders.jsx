@@ -32,7 +32,6 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@chakra-ui/react";
-
 import { FaSort, FaFilter } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
 import { useState, useEffect, useCallback, useRef } from "react";

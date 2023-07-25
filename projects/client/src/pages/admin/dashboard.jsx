@@ -1,6 +1,5 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import Axios from "axios";
-// import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -36,9 +35,6 @@ export default function Dashboard() {
       <Text fontSize="18px" mt={5} mb={2}>
         Dashboard Page
       </Text>
-      {/* <Text color={"gray.500"} mb={6}>
-        The page you're looking is Dashboard
-      </Text> */}
     </Box>
   );
 }

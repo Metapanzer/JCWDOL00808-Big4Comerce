@@ -1,12 +1,10 @@
-import { Text, Input, InputGroup, Button, InputRightElement, Select, useToast } from "@chakra-ui/react";
-import { Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider } from "@chakra-ui/react";
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { Text, Button, Select, useToast } from "@chakra-ui/react";
 import Axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const AssignAdmin = (props) => {
+const AssignAdmin = () => {
   // nampung hasil get data warehouse
   const [warehouseData, setWarehouseData] = useState([]);
   const [city, setCity] = useState("");
@@ -35,13 +33,14 @@ const AssignAdmin = (props) => {
       admins_id: id,
       id: warehouse,
     })
-      .then((response) => {
+      .then(() => {
         toast({
           title: "Admin assigned!",
           status: "success",
           duration: 9000,
           isClosable: true,
-          onCloseComplete: () => navigate("/admin/manageadmin", { replace: true }),
+          onCloseComplete: () =>
+            navigate("/admin/manageadmin", { replace: true }),
         });
       })
       .catch((err) => {
@@ -51,7 +50,8 @@ const AssignAdmin = (props) => {
           status: "warning",
           duration: 9000,
           isClosable: true,
-          onCloseComplete: () => navigate("/admin/manageadmin", { replace: true }),
+          onCloseComplete: () =>
+            navigate("/admin/manageadmin", { replace: true }),
         });
       });
   };
@@ -88,7 +88,10 @@ const AssignAdmin = (props) => {
                 >
                   {warehouseData.map((value) => {
                     return (
-                      <option value={value.id + "," + value.city} key={value.id}>
+                      <option
+                        value={value.id + "," + value.city}
+                        key={value.id}
+                      >
                         {value.name}
                       </option>
                     );
@@ -103,7 +106,11 @@ const AssignAdmin = (props) => {
               </div>
             </div>
           </div>
-          <Button colorScheme="facebook" style={{ width: "15%", marginInline: "auto", marginBottom: 50 }} onClick={assignButton}>
+          <Button
+            colorScheme="facebook"
+            style={{ width: "15%", marginInline: "auto", marginBottom: 50 }}
+            onClick={assignButton}
+          >
             Assign admin
           </Button>
         </>

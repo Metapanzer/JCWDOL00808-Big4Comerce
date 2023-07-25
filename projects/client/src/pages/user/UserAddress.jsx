@@ -20,9 +20,7 @@ import {
   useToast,
   Tooltip,
 } from "@chakra-ui/react";
-import { EditIcon, DeleteIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
-// import { useFormik } from "formik";
-// import * as Yup from "yup";
+import { EditIcon, DeleteIcon, AddIcon } from "@chakra-ui/icons";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -106,15 +104,6 @@ const UserAddress = () => {
   return (
     <>
       <Box minH={"70vh"} mb={4} w={"full"}>
-        {/* <HStack mb={4} mt={2} mr={4} justify="flex-end">
-          <Link to="/">
-            <IconButton
-              icon={<CloseIcon />}
-              aria-label="Back Button"
-              colorScheme="blue"
-            />
-          </Link>
-        </HStack> */}
         <Heading fontFamily="Oswald" mb={10} mt={10}>
           Address List
         </Heading>

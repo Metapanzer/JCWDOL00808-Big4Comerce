@@ -1,4 +1,4 @@
-import { Box, Text, InputGroup, Input, InputRightElement, Button, useToast } from "@chakra-ui/react";
+import { Box, Text, Input, Button, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import Axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -17,16 +17,22 @@ const UploadPaymentProof = () => {
     formData.append("payment_proof", proof);
     formData.append("id", orders_id);
 
-    await Axios.post(`${process.env.REACT_APP_API_BASE_URL}/orders/upload-payment-proof`, formData, {
-      headers: { Authorization: token },
-    })
+    await Axios.post(
+      `${process.env.REACT_APP_API_BASE_URL}/orders/upload-payment-proof`,
+      formData,
+      {
+        headers: { Authorization: token },
+      }
+    )
       .then((response) => {
         toast({
           title: `${response.data.message}`,
           duration: 9000,
           isClosable: true,
         });
-        setTimeout(() => (navigate("/user/order-list", { replace: true }), 2000));
+        setTimeout(
+          () => (navigate("/user/order-list", { replace: true }), 2000)
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -47,12 +53,25 @@ const UploadPaymentProof = () => {
         <Text className="mt-3" fontSize="md">
           Please upload using the image format (JPG, JPEG, PNG)
         </Text>
-        <Input mt="1.5" type="file" placeholder="upload .jpeg/ .jpg/ .png file less than 5MB" onChange={(element) => setProof(element.target.files[0])} />
+        <Input
+          mt="1.5"
+          type="file"
+          placeholder="upload .jpeg/ .jpg/ .png file less than 5MB"
+          onChange={(element) => setProof(element.target.files[0])}
+        />
 
-        <Button onClick={handleUploadButton} variant="buttonBlack" className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
+        <Button
+          onClick={handleUploadButton}
+          variant="buttonBlack"
+          className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600"
+        >
           Upload
         </Button>
-        <Button onClick={() => navigate("/user/order-list")} variant="buttonWhite" className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">
+        <Button
+          onClick={() => navigate("/user/order-list")}
+          variant="buttonWhite"
+          className="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600"
+        >
           Back to transaction list
         </Button>
       </Box>

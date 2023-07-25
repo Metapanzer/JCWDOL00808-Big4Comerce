@@ -31,21 +31,6 @@ export default function VerificationNewPassword() {
   const navigate = useNavigate();
   const toast = useToast();
 
-  // const isVerifiedNewPassword = async () => {
-  //   try {
-  //     //Get is_verified from database
-  //     const verificationStatus = await axios.get(
-  //       `${process.env.REACT_APP_API_BASE_URL}/user/verify-new-password/${email}`
-  //     );
-  //     //If user password change, navigate to login page
-  //     if (verificationStatus?.data?.data) {
-  //       // navigate("/user/login");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   const handleCreatePassword = async (values) => {
     try {
       setIsLoading(true);
@@ -79,7 +64,6 @@ export default function VerificationNewPassword() {
   };
 
   useEffect(() => {
-    // isVerifiedNewPassword();
     if (!email && !token) {
       navigate("/");
     }
@@ -123,7 +107,8 @@ export default function VerificationNewPassword() {
       w={"full"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}>
+      bg={useColorModeValue("gray.50", "gray.800")}
+    >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6} w={"md"}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"} fontFamily="Oswald">
@@ -134,14 +119,16 @@ export default function VerificationNewPassword() {
           rounded={"none"}
           bg={useColorModeValue("white", "gray.700")}
           boxShadow={"lg"}
-          p={8}>
+          p={8}
+        >
           <Stack spacing={4}>
             <form onSubmit={formik.handleSubmit}>
               <FormControl
                 fontFamily="Roboto"
                 id="email"
                 isReadOnly
-                isInvalid={formik.touched.email && formik.errors.email}>
+                isInvalid={formik.touched.email && formik.errors.email}
+              >
                 <FormLabel>Email Address</FormLabel>
                 <Input
                   textColor={"gray"}
@@ -160,7 +147,8 @@ export default function VerificationNewPassword() {
                 mt={3}
                 id="password"
                 isRequired
-                isInvalid={formik.touched.password && formik.errors.password}>
+                isInvalid={formik.touched.password && formik.errors.password}
+              >
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
                   <Input
@@ -177,7 +165,8 @@ export default function VerificationNewPassword() {
                       variant={"ghost"}
                       onClick={() =>
                         setShowPassword((showPassword) => !showPassword)
-                      }>
+                      }
+                    >
                       {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                     </Button>
                   </InputRightElement>
@@ -192,7 +181,8 @@ export default function VerificationNewPassword() {
                 isInvalid={
                   formik.touched.confirmPassword &&
                   formik.errors.confirmPassword
-                }>
+                }
+              >
                 <FormLabel>Confirm Password</FormLabel>
                 <InputGroup>
                   <Input
@@ -211,7 +201,8 @@ export default function VerificationNewPassword() {
                         setShowConfirmPassword(
                           (showConfirmPassword) => !showConfirmPassword
                         )
-                      }>
+                      }
+                    >
                       {showConfirmPassword ? <ViewIcon /> : <ViewOffIcon />}
                     </Button>
                   </InputRightElement>
@@ -226,7 +217,8 @@ export default function VerificationNewPassword() {
                   variant="buttonBlack"
                   isLoading={isLoading}
                   type="submit"
-                  loadingText="Submitting">
+                  loadingText="Submitting"
+                >
                   Create New Password
                 </Button>
               </Stack>

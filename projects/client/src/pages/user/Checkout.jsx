@@ -31,9 +31,7 @@ import {
   getTotalWeightInCart,
 } from "../../reducers/cartSlice";
 import ScrollToTopButton from "../../components/ScrollToTopButton";
-
 import { Link, useNavigate } from "react-router-dom";
-
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -44,7 +42,6 @@ const Checkout = () => {
   const [selectedAddress, setSelectedAddress] = useState("");
   const [selectedAddressID, setSelectedAddressId] = useState("");
   const [newAddress, setNewAddress] = useState("");
-  // const [shippingCost, setShippingCost] = useState(null);
   const [courierSelect, setCourierSelect] = useState(null);
   const [shippingMethod, setShippingMethod] = useState(null);
   const [finalCost, setFinalCost] = useState(null);
@@ -89,7 +86,6 @@ const Checkout = () => {
         const primary = fetchedAddresses.find(
           (address) => address.is_primary === true
         );
-        // console.log(primary);
         setPrimaryAddress(primary);
         setSelectedAddress(primary);
 
@@ -113,7 +109,6 @@ const Checkout = () => {
       }
       setLoading(false);
     };
-    // console.log(primaryAddress);
     fetchAddressesData();
   }, []);
 
@@ -204,8 +199,6 @@ const Checkout = () => {
       console.error("Error fetching shipping cost:", error);
     }
   };
-
-  // fetchShippingCost(originName, destinationName);
 
   const fetchWarehouseData = async () => {
     try {

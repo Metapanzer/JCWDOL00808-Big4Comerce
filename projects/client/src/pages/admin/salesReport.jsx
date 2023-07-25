@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
-  Box,
   Table,
   Thead,
   Tbody,
@@ -21,7 +20,6 @@ import {
 } from "@chakra-ui/react";
 import jwtDecode from "jwt-decode";
 import { Chart } from "react-google-charts";
-import ReactPaginate from "react-paginate";
 
 const SalesReport = () => {
   const [report, setReport] = useState({ monthly: [], weekly: [] });
@@ -35,10 +33,6 @@ const SalesReport = () => {
   const [products, setProducts] = useState([]);
   const [warehouses, setWarehouses] = useState([]);
   const [categories, setCategoriesProducts] = useState([]);
-  // const [page, setPage] = useState(0);
-  // const [limit, setLimit] = useState(10);
-  // const [pages, setPages] = useState(0);
-  // const [rows, setRows] = useState(0);
   const [role, setRole] = useState(0);
 
   useEffect(() => {
@@ -65,21 +59,12 @@ const SalesReport = () => {
       if (product) url += `&product_filter=${product}`;
 
       const response = await axios.get(url);
-      // console.log(response.data);
       setReport(response.data.report);
-      // setPage(response.data.page);
-      // setPages(response.data.totalPage);
-      // setRows(response.data.totalRows);
       setLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
-
-  // console.log("SD", startDate);
-  // const changePage = ({ selected }) => {
-  //   setPage(selected);
-  // };
 
   const fetchData = async () => {
     const responseWarehouse = await axios.get(
@@ -116,7 +101,6 @@ const SalesReport = () => {
         Number(item.totalQuantity),
       ]),
     ];
-    // console.log("Chart data:", chartData);
     return chartData;
   };
 
@@ -350,31 +334,6 @@ const SalesReport = () => {
           {renderTable(report[timePeriod])}
         </>
       </VStack>
-
-      {/* <Flex alignItems="center" justifyContent="center">
-        <ReactPaginate
-          previousLabel={"< Prev"}
-          nextLabel={"Next >"}
-          pageCount={Math.min(10, pages)}
-          onPageChange={changePage}
-          containerClassName={"flex"}
-          pageLinkClassName={
-            "mx-2 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
-          }
-          previousLinkClassName={
-            "mx-2 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
-          }
-          nextLinkClassName={
-            "mx-2 bg-gray-200 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
-          }
-          activeLinkClassName={
-            "mx-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          }
-          disabledLinkClassName={
-            "mx-2 bg-gray-300 text-gray-500 font-bold py-2 px-4 rounded"
-          }
-        />
-      </Flex> */}
     </div>
   );
 };
