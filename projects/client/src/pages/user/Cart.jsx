@@ -288,7 +288,6 @@ export default function Cart() {
                   Checkout
                 </Button>
               )}
-              {/* </Link> */}
             </div>
           </div>
         </div>

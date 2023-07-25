@@ -34,17 +34,16 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
   Box,
-  HStack,
 } from "@chakra-ui/react";
 import { BiArrowBack } from "react-icons/bi";
 import { useState, useEffect } from "react";
 import Axios from "axios";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import React from "react";
 import * as yup from "yup";
 import { useFormik } from "formik";
 
-const WarehouseDetails = (props) => {
+const WarehouseDetails = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");

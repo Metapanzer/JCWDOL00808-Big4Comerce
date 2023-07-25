@@ -51,8 +51,6 @@ const EditUserAddress = () => {
   };
 
   const onGetCity = async (province_id) => {
-    // console.log("province_id:", province_id)
-
     await axios
       .get(
         `${process.env.REACT_APP_API_BASE_URL}/warehouses/getCityData?province_id=${province_id}`

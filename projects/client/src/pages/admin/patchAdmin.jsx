@@ -6,7 +6,6 @@ import {
   Select,
   Text,
   VStack,
-  useDisclosure,
   useToast,
   FormErrorMessage,
 } from "@chakra-ui/react";
@@ -136,7 +135,8 @@ const PatchAdmin = () => {
           <FormControl
             id="fullName"
             isRequired
-            isInvalid={formik.touched.full_name && formik.errors.full_name}>
+            isInvalid={formik.touched.full_name && formik.errors.full_name}
+          >
             <FormLabel>Full Name</FormLabel>
             <Input
               type="text"
@@ -149,7 +149,8 @@ const PatchAdmin = () => {
           <FormControl
             id="email"
             isRequired
-            isInvalid={formik.touched.email && formik.errors.email}>
+            isInvalid={formik.touched.email && formik.errors.email}
+          >
             <FormLabel>Email</FormLabel>
             <Input
               type="email"
@@ -162,7 +163,8 @@ const PatchAdmin = () => {
           <FormControl
             id="password"
             isRequired
-            isInvalid={formik.touched.password && formik.errors.password}>
+            isInvalid={formik.touched.password && formik.errors.password}
+          >
             <FormLabel>Password</FormLabel>
             <Input
               type="password"
@@ -177,7 +179,8 @@ const PatchAdmin = () => {
             isRequired
             isInvalid={
               formik.touched.phone_number && formik.errors.phone_number
-            }>
+            }
+          >
             <FormLabel>Phone Number</FormLabel>
             <Input
               type="tel"
@@ -190,11 +193,13 @@ const PatchAdmin = () => {
           <FormControl
             id="role"
             isRequired
-            isInvalid={formik.touched.role && formik.errors.role}>
+            isInvalid={formik.touched.role && formik.errors.role}
+          >
             <FormLabel>Role</FormLabel>
             <Select
               placeholder="Choose Admin Role"
-              {...formik.getFieldProps("role")}>
+              {...formik.getFieldProps("role")}
+            >
               {[
                 { value: "1", label: "Admin" },
                 { value: "2", label: "Admin Warehouse" },
@@ -210,7 +215,8 @@ const PatchAdmin = () => {
           <FormControl
             id="image"
             isRequired
-            isInvalid={formik.touched.image && formik.errors.image}>
+            isInvalid={formik.touched.image && formik.errors.image}
+          >
             <FormLabel>Profile Image</FormLabel>
             <Input
               type="file"

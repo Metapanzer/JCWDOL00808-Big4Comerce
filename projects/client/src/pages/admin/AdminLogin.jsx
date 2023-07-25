@@ -1,4 +1,4 @@
-import { Link, Input, InputGroup, InputRightElement, Box, Spacer, Button, Text, useToast, FormControl, FormLabel, FormErrorMessage, Stack, Heading } from "@chakra-ui/react";
+import { Input, InputGroup, InputRightElement, Box, Button, useToast, FormControl, FormLabel, FormErrorMessage, Stack, Heading } from "@chakra-ui/react";
 import React from "react";
 import { useState } from "react";
 import Axios from "axios";
@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
-const AdminLogin = (props) => {
+const AdminLogin = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
 

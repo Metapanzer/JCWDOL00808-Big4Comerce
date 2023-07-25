@@ -10,16 +10,14 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Link,
   Stack,
-  Text,
   useColorModeValue,
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 export default function Verification() {
@@ -124,7 +122,8 @@ export default function Verification() {
       w={"full"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("gray.50", "gray.800")}>
+      bg={useColorModeValue("gray.50", "gray.800")}
+    >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6} w={"md"}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"} fontFamily="Oswald">
@@ -135,14 +134,16 @@ export default function Verification() {
           rounded={"none"}
           bg={useColorModeValue("white", "gray.700")}
           boxShadow={"lg"}
-          p={8}>
+          p={8}
+        >
           <Stack spacing={4}>
             <form onSubmit={formik.handleSubmit}>
               <FormControl
                 fontFamily="Roboto"
                 id="email"
                 isReadOnly
-                isInvalid={formik.touched.email && formik.errors.email}>
+                isInvalid={formik.touched.email && formik.errors.email}
+              >
                 <FormLabel>Email address</FormLabel>
                 <Input
                   id="email"
@@ -161,7 +162,8 @@ export default function Verification() {
                 id="password"
                 mt={3}
                 isRequired
-                isInvalid={formik.touched.password && formik.errors.password}>
+                isInvalid={formik.touched.password && formik.errors.password}
+              >
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
                   <Input
@@ -178,7 +180,8 @@ export default function Verification() {
                       variant={"ghost"}
                       onClick={() =>
                         setShowPassword((showPassword) => !showPassword)
-                      }>
+                      }
+                    >
                       {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                     </Button>
                   </InputRightElement>
@@ -193,7 +196,8 @@ export default function Verification() {
                 isInvalid={
                   formik.touched.confirmPassword &&
                   formik.errors.confirmPassword
-                }>
+                }
+              >
                 <FormLabel>Confirm Password</FormLabel>
                 <InputGroup>
                   <Input
@@ -212,7 +216,8 @@ export default function Verification() {
                         setShowConfirmPassword(
                           (showConfirmPassword) => !showConfirmPassword
                         )
-                      }>
+                      }
+                    >
                       {showConfirmPassword ? <ViewIcon /> : <ViewOffIcon />}
                     </Button>
                   </InputRightElement>
@@ -227,7 +232,8 @@ export default function Verification() {
                   variant="buttonBlack"
                   isLoading={isLoading}
                   type="submit"
-                  loadingText="Submitting">
+                  loadingText="Submitting"
+                >
                   Create password
                 </Button>
               </Stack>

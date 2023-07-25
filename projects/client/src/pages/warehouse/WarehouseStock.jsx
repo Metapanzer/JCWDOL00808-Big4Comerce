@@ -1,4 +1,3 @@
-// components/ProductTable.js
 import React, { useState, useEffect } from "react";
 import {
   Table,
@@ -35,10 +34,8 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from "@chakra-ui/react";
-
 import { CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { Link, useParams } from "react-router-dom";
-
 import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -118,8 +115,6 @@ const WarehouseStock = () => {
         isClosable: true,
       });
     }
-    // await handleDeleteAddress(addressToDelete);
-    // setAddressToDelete(null);
   };
 
   //API UPDATE STOCK
@@ -141,7 +136,6 @@ const WarehouseStock = () => {
         duration: 3000,
         isClosable: true,
       });
-      // resetForm()
     } catch (error) {
       console.log(error);
       toast({
@@ -151,9 +145,6 @@ const WarehouseStock = () => {
         isClosable: true,
       });
     }
-    // finally {
-    //   setSubmitting(false);
-    // }
 
     // Handle updating stock for the selected product
     onEditStockClose();
@@ -231,7 +222,6 @@ const WarehouseStock = () => {
         `${process.env.REACT_APP_API_BASE_URL}/warehouses/get-warehouse-product/${id}?search_query=${searchTerm}&role=${userRole}`,
         { headers: { Authorization: token } }
       );
-      // setWarehouseName(response?.[0].warehouse?.name)
       setProducts(response?.data?.data);
     } catch (error) {
       toast({
@@ -308,7 +298,6 @@ const WarehouseStock = () => {
             onChange={(event) => setSearchTerm(event.target.value)}
             maxW="200px"
           />
-          {/* <IconButton icon={<SearchIcon />} aria-label="Search" colorScheme="blue" /> */}
 
           <Tooltip hasArrow label="Add Product to Warehouse">
             <IconButton
@@ -355,7 +344,6 @@ const WarehouseStock = () => {
       <Modal isOpen={isAddStockOpen} onClose={onAddStockClose}>
         <ModalOverlay />
         <ModalContent>
-          {/* <ModalHeader>Update Stock for {selectedProduct.product_name}</ModalHeader> */}
           <ModalHeader>Add Stock</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -390,7 +378,6 @@ const WarehouseStock = () => {
                     placeholder=" "
                     {...formikAdd.getFieldProps("products_id")}
                     onChange={(value) => {
-                      // fetchProductsModal(value.target.value);
                       formikAdd.handleChange(value);
                     }}>
                     {productsModal.map((element) => (
@@ -425,7 +412,6 @@ const WarehouseStock = () => {
                   type="submit"
                   colorScheme="blue"
                   mr={3}
-                  // onClick={handleCreateStock}
                   isLoading={formikAdd.isSubmitting}>
                   Add Stock
                 </Button>
@@ -440,11 +426,9 @@ const WarehouseStock = () => {
       <Modal isOpen={isEditStockOpen} onClose={onEditStockClose}>
         <ModalOverlay />
         <ModalContent>
-          {/* <ModalHeader>Update Stock for {selectedProduct.product_name}</ModalHeader> */}
           <ModalHeader>Update Stock</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {/* <form onSubmit={formikUpdate.handleSubmit}> */}
             <form
               onSubmit={(e) => {
                 e.preventDefault();

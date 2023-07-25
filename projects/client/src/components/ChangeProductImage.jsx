@@ -161,7 +161,6 @@ const ChangeProductImage = ({
             <Button
               onClick={() => {
                 onClose();
-                // setImage("");
                 setLocalImage("");
               }}
               mt={4}

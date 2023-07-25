@@ -19,17 +19,11 @@ import {
   TableCaption,
   useToast,
 } from "@chakra-ui/react";
-import {
-  EditIcon,
-  DeleteIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "@chakra-ui/icons";
+import { EditIcon } from "@chakra-ui/icons";
 import { FaSort, FaFilter, FaPlus } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import AddProductModal from "../../components/addProductModal";
 import PatchProductModal from "../../components/PatchProductModal";
 import DeleteConfirmation from "../../components/DeleteConfirmationDialog";
@@ -70,7 +64,6 @@ function ManageProducts() {
     setPage(response.data.page);
     setPages(response.data.totalPage);
     setRows(response.data.totalRows);
-    // console.log(response.data.result);
   };
 
   const deleteProducts = async (id) => {

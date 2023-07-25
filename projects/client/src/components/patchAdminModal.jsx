@@ -4,7 +4,6 @@ import {
   FormLabel,
   Input,
   Select,
-  Text,
   VStack,
   useToast,
   FormErrorMessage,
@@ -14,10 +13,7 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  Image,
   Button,
-  Checkbox,
-  Stack,
   Flex,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -32,7 +28,6 @@ import ChangeImageModal from "./ChangeProfilePictureModal";
 const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
   const toast = useToast();
   const id = adminId;
-  //   const [image, setImage] = useState("");
   const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] =
     useState(false);
   const [isChangeImageModalOpen, setIsChangeImageModalOpen] = useState(false);
@@ -43,7 +38,6 @@ const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
       email: "",
       phone_number: "",
       role: "",
-      //   profile_picture: null,
     },
     validationSchema: Yup.object({
       full_name: Yup.string().required("Full Name is required"),
@@ -52,15 +46,6 @@ const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
         .required("Email is required"),
       phone_number: Yup.string().required("Phone Number is required"),
       role: Yup.string().required("Role is required"),
-      //   profile_picture: Yup.mixed()
-      //     .test("fileType", "Invalid image format", (value) => {
-      //       if (value && value.length) {
-      //         const fileType = value[0].type;
-      //         return fileType === "image/png" || fileType === "image/jpg" || fileType === "image/jpeg";
-      //       }
-      //       return true;
-      //     })
-      //     .required("Image is required"),
     }),
     onSubmit: async (values) => {
       try {
@@ -87,15 +72,12 @@ const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
         `${process.env.REACT_APP_API_BASE_URL}/admin/getAdminById/${id}`
       );
       const adminData = response.data;
-      // console.log(response);
       formik.setValues({
         full_name: adminData.full_name,
         email: adminData.email,
         phone_number: adminData.phone_number,
         role: adminData.role.toString(),
-        // profile_picture: adminData.profile_picture,
       });
-      //   setImage(adminData.profile_picture);
     } catch (error) {
       toast({
         title: `${error.response.data.message}`,
@@ -108,20 +90,6 @@ const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
 
   const patchAdmin = async (values) => {
     try {
-      //   const formData = new FormData();
-      //   formData.append("full_name", values.full_name);
-      //   formData.append("email", values.email);
-      //   formData.append("phone_number", values.phone_number);
-      //   formData.append("role", values.role);
-      //   //   if (values.profile_picture) {
-      //   //     formData.append("profile_picture", values.profile_picture[0]);
-      //   //   }
-
-      //   await axios.patch(`http://localhost:8000/admin/patchAdmin/${id}`, formData, {
-      //     headers: {
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //   });
       const data = {
         full_name: values.full_name,
         email: values.email,
@@ -135,7 +103,6 @@ const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
       );
       onClose();
       formik.resetForm();
-      //   setImage("");
       onAdminPatch();
       toast({
         title: `Edit Admin Success`,
@@ -156,18 +123,6 @@ const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
   useEffect(() => {
     fetchAdminData();
   }, [adminId]);
-
-  //   const handleImageChange = (event) => {
-  //     const file = event.target.files[0];
-  //     const reader = new FileReader();
-
-  //     reader.onload = (e) => {
-  //       setImage(e.target.result);
-  //     };
-
-  //     reader.readAsDataURL(file);
-  //     formik.setFieldValue("profile_picture", event.currentTarget.files);
-  //   };
 
   const openChangePasswordModal = () => {
     setIsChangePasswordModalOpen(true);
@@ -201,7 +156,8 @@ const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
                     isRequired
                     isInvalid={
                       formik.touched.full_name && formik.errors.full_name
-                    }>
+                    }
+                  >
                     <FormLabel>Full Name</FormLabel>
                     <Input
                       type="text"
@@ -216,7 +172,8 @@ const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
                   <FormControl
                     id="email"
                     isRequired
-                    isInvalid={formik.touched.email && formik.errors.email}>
+                    isInvalid={formik.touched.email && formik.errors.email}
+                  >
                     <FormLabel>Email</FormLabel>
                     <Input
                       type="email"
@@ -231,7 +188,8 @@ const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
                     isRequired
                     isInvalid={
                       formik.touched.phone_number && formik.errors.phone_number
-                    }>
+                    }
+                  >
                     <FormLabel>Phone Number</FormLabel>
                     <Input
                       type="tel"
@@ -246,11 +204,13 @@ const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
                   <FormControl
                     id="role"
                     isRequired
-                    isInvalid={formik.touched.role && formik.errors.role}>
+                    isInvalid={formik.touched.role && formik.errors.role}
+                  >
                     <FormLabel>Role</FormLabel>
                     <Select
                       placeholder="Choose Admin Role"
-                      {...formik.getFieldProps("role")}>
+                      {...formik.getFieldProps("role")}
+                    >
                       {[
                         { value: "1", label: "Admin" },
                         { value: "2", label: "Admin Warehouse" },
@@ -291,8 +251,8 @@ const PatchAdminModal = ({ isOpen, onClose, adminId, onAdminPatch }) => {
                       mr={1}
                       onClick={() => {
                         onClose();
-                        // setImage("");
-                      }}>
+                      }}
+                    >
                       Cancel
                     </Button>
                     <AddAdminConfirmation onSave={formik.handleSubmit} />

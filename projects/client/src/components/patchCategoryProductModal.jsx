@@ -1,15 +1,34 @@
-import { Box, FormControl, FormLabel, Input, Modal, ModalOverlay, Spinner, ModalContent, ModalHeader, ModalCloseButton, ModalBody, VStack, useToast, FormErrorMessage, Flex, Button } from "@chakra-ui/react";
+import {
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Modal,
+  ModalOverlay,
+  Spinner,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  VStack,
+  useToast,
+  FormErrorMessage,
+  Flex,
+  Button,
+} from "@chakra-ui/react";
 import axios from "axios";
 import AddCategoryConfirmation from "./AddConfirmation";
-import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-const PatchCategoryProduct = ({ isOpen, onClose, categoryId, onCategoryUpdate }) => {
+const PatchCategoryProduct = ({
+  isOpen,
+  onClose,
+  categoryId,
+  onCategoryUpdate,
+}) => {
   const toast = useToast();
-  const navigate = useNavigate();
-  //   const { id } = useParams();
   const id = categoryId;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +67,9 @@ const PatchCategoryProduct = ({ isOpen, onClose, categoryId, onCategoryUpdate })
 
     setIsLoading(true); // set loading state
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/productcategory/productcategory/${id}`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_BASE_URL}/productcategory/productcategory/${id}`
+      );
       const categoryData = response.data;
 
       formik.setValues({
@@ -69,7 +90,10 @@ const PatchCategoryProduct = ({ isOpen, onClose, categoryId, onCategoryUpdate })
 
   const patchCategory = async (values) => {
     try {
-      await axios.patch(`${process.env.REACT_APP_API_BASE_URL}/productcategory/patchcategoryproduct/${id}`, values);
+      await axios.patch(
+        `${process.env.REACT_APP_API_BASE_URL}/productcategory/patchcategoryproduct/${id}`,
+        values
+      );
 
       toast({
         title: `Edit Category Success`,
@@ -79,7 +103,6 @@ const PatchCategoryProduct = ({ isOpen, onClose, categoryId, onCategoryUpdate })
       });
       onCategoryUpdate();
       onClose();
-      // navigate("/admin/managecategory");
     } catch (error) {
       toast({
         title: `${error.response.data.message}`,
@@ -103,21 +126,45 @@ const PatchCategoryProduct = ({ isOpen, onClose, categoryId, onCategoryUpdate })
         <ModalBody>
           {isLoading ? (
             <Flex justify="center" align="center" h="200px">
-              <Spinner thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="blue.500"
+                size="xl"
+              />
             </Flex>
           ) : (
             <Box w="100%" maxW="600px" mx="auto" my="auto" mt="3" mb="10">
               <form onSubmit={formik.handleSubmit}>
                 <VStack spacing="1" align="stretch">
-                  <FormControl id="name" isRequired isInvalid={formik.touched.name && formik.errors.name}>
+                  <FormControl
+                    id="name"
+                    isRequired
+                    isInvalid={formik.touched.name && formik.errors.name}
+                  >
                     <FormLabel>Category Name</FormLabel>
-                    <Input type="text" {...formik.getFieldProps("name")} placeholder="Input Category" />
+                    <Input
+                      type="text"
+                      {...formik.getFieldProps("name")}
+                      placeholder="Input Category"
+                    />
                     <FormErrorMessage>{formik.errors.name}</FormErrorMessage>
                   </FormControl>
 
-                  <FormControl id="description" isRequired isInvalid={formik.touched.description && formik.errors.description}>
+                  <FormControl
+                    id="description"
+                    isRequired
+                    isInvalid={
+                      formik.touched.description && formik.errors.description
+                    }
+                  >
                     <FormLabel>Description</FormLabel>
-                    <Input type="text" {...formik.getFieldProps("description")} placeholder="Input Description" />
+                    <Input
+                      type="text"
+                      {...formik.getFieldProps("description")}
+                      placeholder="Input Description"
+                    />
                     <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
                   </FormControl>
 
@@ -134,7 +181,10 @@ const PatchCategoryProduct = ({ isOpen, onClose, categoryId, onCategoryUpdate })
                       Cancel
                     </Button>
 
-                    <AddCategoryConfirmation onSave={formik.handleSubmit} isLoading={isSubmitting} />
+                    <AddCategoryConfirmation
+                      onSave={formik.handleSubmit}
+                      isLoading={isSubmitting}
+                    />
                   </Flex>
                 </VStack>
               </form>

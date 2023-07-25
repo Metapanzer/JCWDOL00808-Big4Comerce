@@ -1,5 +1,13 @@
 import React from "react";
-import { useDisclosure, Button, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter } from "@chakra-ui/react";
+import {
+  Button,
+  AlertDialog,
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogBody,
+  AlertDialogFooter,
+} from "@chakra-ui/react";
 
 function LogoutDialog({ onLogout, isOpen, onClose }) {
   const cancelRef = React.useRef();
@@ -14,7 +22,11 @@ function LogoutDialog({ onLogout, isOpen, onClose }) {
       {/* <Button variant="outline" colorScheme="red" onClick={onOpen}>
         Logout
       </Button> */}
-      <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
+      <AlertDialog
+        isOpen={isOpen}
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+      >
         <AlertDialogOverlay />
         <AlertDialogContent>
           <AlertDialogHeader fontSize="lg" fontWeight="bold">
@@ -25,7 +37,10 @@ function LogoutDialog({ onLogout, isOpen, onClose }) {
             <Button ref={cancelRef} onClick={onClose}>
               Cancel
             </Button>
-            <button class="bg-dark-purple hover:bg-blue-700 text-white font-bold py-2 px-4 ml-3 rounded" onClick={handleLogout}>
+            <button
+              class="bg-dark-purple hover:bg-blue-700 text-white font-bold py-2 px-4 ml-3 rounded"
+              onClick={handleLogout}
+            >
               Logout
             </button>
           </AlertDialogFooter>

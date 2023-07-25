@@ -10,7 +10,6 @@ import {
   FormLabel,
   Input,
   FormErrorMessage,
-  Button,
   VStack,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
@@ -39,8 +38,6 @@ const ChangePasswordModal = ({ isOpen, onClose, adminId }) => {
         .required("Confirm new password is required"),
     }),
     onSubmit: async (values) => {
-      // console.log("New password:", values.password);
-
       // Handle password change
       try {
         const response = await axios.patch(
