@@ -24,7 +24,7 @@ import {
   PopoverHeader,
   PopoverBody,
 } from "@chakra-ui/react";
-import { FaSort, FaFilter, FaPlus, FaCheck, FaTimes } from "react-icons/fa";
+import { FaSort, FaFilter, FaCheck, FaTimes } from "react-icons/fa";
 import ReactPaginate from "react-paginate";
 import { useState, useEffect } from "react";
 import axios from "axios";
